@@ -50,8 +50,8 @@ export default function ContactSection() {
   const contactInfo = [
     {
       label: 'Email',
-      value: 'contato@rphldsgn.com',
-      href: 'mailto:contato@rphldsgn.com',
+      value: 'rphldsgn@gmail.com',
+      href: 'mailto:rphldsgn@gmail.com',
     },
     {
       label: 'Instagram',
@@ -59,13 +59,13 @@ export default function ContactSection() {
       href: 'https://instagram.com/rphldsgn',
     },
     {
-      label: 'Behance',
+      label: 'You Tube',
       value: 'RPHL DSGN',
-      href: 'https://behance.net/rphldsgn',
+      href: 'https://youtube.com/rphldsgn',
     },
     {
       label: 'Local',
-      value: 'São Paulo, Brasil',
+      value: 'Gramado, RS, Brasil',
       href: null,
     },
   ]
