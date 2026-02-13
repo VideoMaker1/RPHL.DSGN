@@ -44,7 +44,7 @@ export default function Footer() {
               © {currentYear} RPHL DSGN. Todos os direitos reservados.
             </p>
             <p className="font-mono-brutalist text-xs text-gray-600 mt-2">
-              Feito com paixão em São Paulo
+              Feito com paixão em Gramado
             </p>
           </div>
         </div>

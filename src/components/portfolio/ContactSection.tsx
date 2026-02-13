@@ -61,7 +61,7 @@ export default function ContactSection() {
     {
       label: 'You Tube',
       value: 'RPHL DSGN',
-      href: 'https://youtube.com/rphldsgn',
+      href: 'https://youtube.com/@rphldsgn',
     },
     {
       label: 'Local',
