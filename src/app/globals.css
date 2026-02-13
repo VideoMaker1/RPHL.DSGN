@@ -1,0 +1,751 @@
+@import url('https://fonts.googleapis.com/css2?family=Space+Grotesk:wght@400;500;600;700&family=Bebas+Neue&family=JetBrains+Mono:wght@400;500;600&display=swap');
+@import "tailwindcss";
+@import "tw-animate-css";
+
+@custom-variant dark (&:is(.dark *));
+
+/* ========================================
+   BRUTALIST/MINIMALIST PORTFOLIO THEME
+   RPHL DSGN - Digital Art Portfolio
+   ======================================== */
+
+@theme inline {
+  --color-background: var(--background);
+  --color-foreground: var(--foreground);
+  --font-sans: var(--font-geist-sans);
+  --font-mono: var(--font-geist-mono);
+  --color-sidebar-ring: var(--sidebar-ring);
+  --color-sidebar-border: var(--sidebar-border);
+  --color-sidebar-accent-foreground: var(--sidebar-accent-foreground);
+  --color-sidebar-accent: var(--sidebar-accent);
+  --color-sidebar-primary-foreground: var(--sidebar-primary-foreground);
+  --color-sidebar-primary: var(--sidebar-primary);
+  --color-sidebar-foreground: var(--sidebar-foreground);
+  --color-sidebar: var(--sidebar);
+  --color-chart-5: var(--chart-5);
+  --color-chart-4: var(--chart-4);
+  --color-chart-3: var(--chart-3);
+  --color-chart-2: var(--chart-2);
+  --color-chart-1: var(--chart-1);
+  --color-ring: var(--ring);
+  --color-input: var(--input);
+  --color-border: var(--border);
+  --color-destructive: var(--destructive);
+  --color-accent-foreground: var(--accent-foreground);
+  --color-accent: var(--accent);
+  --color-muted-foreground: var(--muted-foreground);
+  --color-muted: var(--muted);
+  --color-secondary-foreground: var(--secondary-foreground);
+  --color-secondary: var(--secondary);
+  --color-primary-foreground: var(--primary-foreground);
+  --color-primary: var(--primary);
+  --color-popover-foreground: var(--popover-foreground);
+  --color-popover: var(--popover);
+  --color-card-foreground: var(--card-foreground);
+  --color-card: var(--card);
+  --radius-sm: calc(var(--radius) - 4px);
+  --radius-md: calc(var(--radius) - 2px);
+  --radius-lg: var(--radius);
+  --radius-xl: calc(var(--radius) + 4px);
+}
+
+/* ========================================
+   CSS CUSTOM PROPERTIES - BRUTALIST THEME
+   ======================================== */
+:root {
+  --radius: 0;
+  
+  /* Core Colors - Brutalist Monochrome */
+  --background: #000000;
+  --foreground: #FFFFFF;
+  --card: #0a0a0a;
+  --card-foreground: #FFFFFF;
+  --popover: #0a0a0a;
+  --popover-foreground: #FFFFFF;
+  
+  /* Primary - Pure Contrast */
+  --primary: #FFFFFF;
+  --primary-foreground: #000000;
+  
+  /* Secondary - Grays */
+  --secondary: #1a1a1a;
+  --secondary-foreground: #FFFFFF;
+  --muted: #1a1a1a;
+  --muted-foreground: #888888;
+  
+  /* Accent - Industrial Red */
+  --accent: #ff3e00;
+  --accent-foreground: #FFFFFF;
+  
+  /* Utility Colors */
+  --destructive: #ff3e00;
+  --border: #333333;
+  --input: #1a1a1a;
+  --ring: #ff3e00;
+  
+  /* Chart Colors */
+  --chart-1: #ff3e00;
+  --chart-2: #ffffff;
+  --chart-3: #888888;
+  --chart-4: #333333;
+  --chart-5: #1a1a1a;
+  
+  /* Sidebar */
+  --sidebar: #0a0a0a;
+  --sidebar-foreground: #FFFFFF;
+  --sidebar-primary: #ff3e00;
+  --sidebar-primary-foreground: #FFFFFF;
+  --sidebar-accent: #1a1a1a;
+  --sidebar-accent-foreground: #FFFFFF;
+  --sidebar-border: #333333;
+  --sidebar-ring: #ff3e00;
+  
+  /* Custom Brutalist Properties */
+  --brutalist-black: #000000;
+  --brutalist-white: #FFFFFF;
+  --brutalist-gray-dark: #0a0a0a;
+  --brutalist-gray: #1a1a1a;
+  --brutalist-gray-mid: #333333;
+  --brutalist-gray-light: #888888;
+  --brutalist-accent: #ff3e00;
+  
+  /* Animation Timing */
+  --ease-out-expo: cubic-bezier(0.16, 1, 0.3, 1);
+  --ease-in-out-expo: cubic-bezier(0.87, 0, 0.13, 1);
+  --ease-out-quart: cubic-bezier(0.25, 1, 0.5, 1);
+}
+
+/* Dark mode is default for this portfolio */
+.dark {
+  --background: #000000;
+  --foreground: #FFFFFF;
+  --card: #0a0a0a;
+  --card-foreground: #FFFFFF;
+  --popover: #0a0a0a;
+  --popover-foreground: #FFFFFF;
+  --primary: #FFFFFF;
+  --primary-foreground: #000000;
+  --secondary: #1a1a1a;
+  --secondary-foreground: #FFFFFF;
+  --muted: #1a1a1a;
+  --muted-foreground: #888888;
+  --accent: #ff3e00;
+  --accent-foreground: #FFFFFF;
+  --destructive: #ff3e00;
+  --border: #333333;
+  --input: #1a1a1a;
+  --ring: #ff3e00;
+}
+
+/* ========================================
+   GLOBAL BASE STYLES
+   ======================================== */
+@layer base {
+  * {
+    @apply border-border outline-ring/50;
+  }
+  
+  html {
+    scroll-behavior: smooth;
+    scrollbar-width: thin;
+    scrollbar-color: var(--brutalist-accent) var(--brutalist-gray);
+  }
+  
+  /* Custom Scrollbar - Webkit */
+  ::-webkit-scrollbar {
+    width: 8px;
+    height: 8px;
+  }
+  
+  ::-webkit-scrollbar-track {
+    background: var(--brutalist-gray);
+  }
+  
+  ::-webkit-scrollbar-thumb {
+    background: var(--brutalist-gray-mid);
+    border-radius: 0;
+  }
+  
+  ::-webkit-scrollbar-thumb:hover {
+    background: var(--brutalist-accent);
+  }
+  
+  body {
+    @apply bg-background text-foreground;
+    font-family: 'Space Grotesk', sans-serif;
+    background-color: var(--brutalist-black);
+    color: var(--brutalist-white);
+    overflow-x: hidden;
+    /* cursor: none; */
+  }
+  
+  /* Selection */
+  ::selection {
+    background: var(--brutalist-accent);
+    color: var(--brutalist-white);
+  }
+}
+
+/* ========================================
+   CUSTOM CURSOR
+   ======================================== */
+.cursor-dot {
+  position: fixed;
+  width: 8px;
+  height: 8px;
+  background: var(--brutalist-white);
+  border-radius: 0;
+  pointer-events: none;
+  z-index: 9999;
+  transform: translate(-50%, -50%);
+  transition: transform 0.1s ease, background 0.2s ease, width 0.2s ease, height 0.2s ease;
+  mix-blend-mode: difference;
+}
+
+.cursor-dot.hover {
+  width: 60px;
+  height: 60px;
+  background: var(--brutalist-accent);
+  mix-blend-mode: normal;
+}
+
+.cursor-outline {
+  position: fixed;
+  width: 40px;
+  height: 40px;
+  border: 1px solid var(--brutalist-white);
+  border-radius: 0;
+  pointer-events: none;
+  z-index: 9998;
+  transform: translate(-50%, -50%);
+  transition: transform 0.15s ease-out, width 0.2s ease, height 0.2s ease, border-color 0.2s ease;
+  mix-blend-mode: difference;
+}
+
+.cursor-outline.hover {
+  width: 80px;
+  height: 80px;
+  border-color: var(--brutalist-accent);
+}
+
+/* ========================================
+   TYPOGRAPHY - BRUTALIST STYLE
+   ======================================== */
+.font-brutalist {
+  font-family: 'Bebas Neue', sans-serif;
+  letter-spacing: 0.05em;
+}
+
+.font-mono-brutalist {
+  font-family: 'JetBrains Mono', monospace;
+}
+
+.font-space {
+  font-family: 'Space Grotesk', sans-serif;
+}
+
+/* ========================================
+   GLITCH EFFECT
+   ======================================== */
+.glitch {
+  position: relative;
+  animation: glitch-skew 1s infinite linear alternate-reverse;
+}
+
+.glitch::before,
+.glitch::after {
+  content: attr(data-text);
+  position: absolute;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+}
+
+.glitch::before {
+  left: 2px;
+  text-shadow: -2px 0 var(--brutalist-accent);
+  clip: rect(24px, 550px, 90px, 0);
+  animation: glitch-anim 2s infinite linear alternate-reverse;
+}
+
+.glitch::after {
+  left: -2px;
+  text-shadow: -2px 0 var(--brutalist-white);
+  clip: rect(85px, 550px, 140px, 0);
+  animation: glitch-anim2 2s infinite linear alternate-reverse;
+}
+
+@keyframes glitch-anim {
+  0% { clip: rect(31px, 9999px, 94px, 0); transform: skew(0.85deg); }
+  5% { clip: rect(70px, 9999px, 71px, 0); transform: skew(0.34deg); }
+  10% { clip: rect(29px, 9999px, 24px, 0); transform: skew(0.75deg); }
+  15% { clip: rect(69px, 9999px, 56px, 0); transform: skew(0.12deg); }
+  20% { clip: rect(20px, 9999px, 97px, 0); transform: skew(0.55deg); }
+  25% { clip: rect(80px, 9999px, 38px, 0); transform: skew(0.93deg); }
+  30% { clip: rect(52px, 9999px, 78px, 0); transform: skew(0.24deg); }
+  35% { clip: rect(46px, 9999px, 35px, 0); transform: skew(0.71deg); }
+  40% { clip: rect(15px, 9999px, 88px, 0); transform: skew(0.42deg); }
+  45% { clip: rect(93px, 9999px, 61px, 0); transform: skew(0.83deg); }
+  50% { clip: rect(42px, 9999px, 47px, 0); transform: skew(0.16deg); }
+  55% { clip: rect(73px, 9999px, 92px, 0); transform: skew(0.64deg); }
+  60% { clip: rect(37px, 9999px, 29px, 0); transform: skew(0.38deg); }
+  65% { clip: rect(58px, 9999px, 85px, 0); transform: skew(0.91deg); }
+  70% { clip: rect(26px, 9999px, 42px, 0); transform: skew(0.27deg); }
+  75% { clip: rect(84px, 9999px, 73px, 0); transform: skew(0.76deg); }
+  80% { clip: rect(51px, 9999px, 19px, 0); transform: skew(0.49deg); }
+  85% { clip: rect(67px, 9999px, 96px, 0); transform: skew(0.12deg); }
+  90% { clip: rect(33px, 9999px, 54px, 0); transform: skew(0.68deg); }
+  95% { clip: rect(79px, 9999px, 31px, 0); transform: skew(0.35deg); }
+  100% { clip: rect(45px, 9999px, 82px, 0); transform: skew(0.89deg); }
+}
+
+@keyframes glitch-anim2 {
+  0% { clip: rect(65px, 9999px, 100px, 0); transform: skew(0.6deg); }
+  5% { clip: rect(52px, 9999px, 74px, 0); transform: skew(0.25deg); }
+  10% { clip: rect(79px, 9999px, 85px, 0); transform: skew(0.73deg); }
+  15% { clip: rect(38px, 9999px, 21px, 0); transform: skew(0.41deg); }
+  20% { clip: rect(91px, 9999px, 67px, 0); transform: skew(0.92deg); }
+  25% { clip: rect(46px, 9999px, 53px, 0); transform: skew(0.18deg); }
+  30% { clip: rect(83px, 9999px, 39px, 0); transform: skew(0.69deg); }
+  35% { clip: rect(27px, 9999px, 78px, 0); transform: skew(0.36deg); }
+  40% { clip: rect(59px, 9999px, 94px, 0); transform: skew(0.81deg); }
+  45% { clip: rect(14px, 9999px, 47px, 0); transform: skew(0.23deg); }
+  50% { clip: rect(72px, 9999px, 62px, 0); transform: skew(0.58deg); }
+  55% { clip: rect(35px, 9999px, 89px, 0); transform: skew(0.15deg); }
+  60% { clip: rect(68px, 9999px, 26px, 0); transform: skew(0.74deg); }
+  65% { clip: rect(22px, 9999px, 71px, 0); transform: skew(0.47deg); }
+  70% { clip: rect(86px, 9999px, 58px, 0); transform: skew(0.93deg); }
+  75% { clip: rect(41px, 9999px, 83px, 0); transform: skew(0.32deg); }
+  80% { clip: rect(95px, 9999px, 44px, 0); transform: skew(0.66deg); }
+  85% { clip: rect(18px, 9999px, 95px, 0); transform: skew(0.19deg); }
+  90% { clip: rect(57px, 9999px, 36px, 0); transform: skew(0.78deg); }
+  95% { clip: rect(74px, 9999px, 81px, 0); transform: skew(0.44deg); }
+  100% { clip: rect(31px, 9999px, 68px, 0); transform: skew(0.87deg); }
+}
+
+@keyframes glitch-skew {
+  0% { transform: skew(2deg); }
+  10% { transform: skew(-1deg); }
+  20% { transform: skew(0deg); }
+  30% { transform: skew(1deg); }
+  40% { transform: skew(-2deg); }
+  50% { transform: skew(0deg); }
+  60% { transform: skew(2deg); }
+  70% { transform: skew(-1deg); }
+  80% { transform: skew(0deg); }
+  90% { transform: skew(1deg); }
+  100% { transform: skew(0deg); }
+}
+
+/* ========================================
+   SCROLL ANIMATIONS
+   ======================================== */
+.scroll-reveal {
+  opacity: 0;
+  transform: translateY(60px);
+  transition: opacity 0.8s var(--ease-out-expo), transform 0.8s var(--ease-out-expo);
+}
+
+.scroll-reveal.visible {
+  opacity: 1;
+  transform: translateY(0);
+}
+
+.scroll-reveal-left {
+  opacity: 0;
+  transform: translateX(-60px);
+  transition: opacity 0.8s var(--ease-out-expo), transform 0.8s var(--ease-out-expo);
+}
+
+.scroll-reveal-left.visible {
+  opacity: 1;
+  transform: translateX(0);
+}
+
+.scroll-reveal-right {
+  opacity: 0;
+  transform: translateX(60px);
+  transition: opacity 0.8s var(--ease-out-expo), transform 0.8s var(--ease-out-expo);
+}
+
+.scroll-reveal-right.visible {
+  opacity: 1;
+  transform: translateX(0);
+}
+
+.scroll-reveal-scale {
+  opacity: 0;
+  transform: scale(0.9);
+  transition: opacity 0.8s var(--ease-out-expo), transform 0.8s var(--ease-out-expo);
+}
+
+.scroll-reveal-scale.visible {
+  opacity: 1;
+  transform: scale(1);
+}
+
+/* Staggered Animation Delays */
+.stagger-1 { transition-delay: 0.1s; }
+.stagger-2 { transition-delay: 0.2s; }
+.stagger-3 { transition-delay: 0.3s; }
+.stagger-4 { transition-delay: 0.4s; }
+.stagger-5 { transition-delay: 0.5s; }
+.stagger-6 { transition-delay: 0.6s; }
+.stagger-7 { transition-delay: 0.7s; }
+.stagger-8 { transition-delay: 0.8s; }
+
+/* ========================================
+   HOVER EFFECTS - BRUTALIST
+   ======================================== */
+.hover-line {
+  position: relative;
+  display: inline-block;
+}
+
+.hover-line::after {
+  content: '';
+  position: absolute;
+  bottom: 0;
+  left: 0;
+  width: 0;
+  height: 2px;
+  background: var(--brutalist-accent);
+  transition: width 0.3s var(--ease-out-expo);
+}
+
+.hover-line:hover::after {
+  width: 100%;
+}
+
+.hover-fill {
+  position: relative;
+  display: inline-block;
+  overflow: hidden;
+  transition: color 0.3s ease;
+}
+
+.hover-fill::before {
+  content: '';
+  position: absolute;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+  background: var(--brutalist-white);
+  transform: translateY(100%);
+  transition: transform 0.3s var(--ease-out-expo);
+  z-index: -1;
+}
+
+.hover-fill:hover {
+  color: var(--brutalist-black);
+}
+
+.hover-fill:hover::before {
+  transform: translateY(0);
+}
+
+.hover-border {
+  position: relative;
+  border: 1px solid var(--brutalist-white);
+  transition: all 0.3s ease;
+}
+
+.hover-border::before {
+  content: '';
+  position: absolute;
+  top: -4px;
+  left: -4px;
+  right: -4px;
+  bottom: -4px;
+  border: 1px solid var(--brutalist-accent);
+  opacity: 0;
+  transition: opacity 0.3s ease;
+}
+
+.hover-border:hover::before {
+  opacity: 1;
+}
+
+/* ========================================
+   BRUTALIST BUTTON STYLES
+   ======================================== */
+.btn-brutalist {
+  position: relative;
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  padding: 1rem 2rem;
+  background: transparent;
+  border: 2px solid var(--brutalist-white);
+  color: var(--brutalist-white);
+  font-family: 'Space Grotesk', sans-serif;
+  font-weight: 600;
+  font-size: 0.875rem;
+  text-transform: uppercase;
+  letter-spacing: 0.1em;
+  /* cursor: none; */
+  transition: all 0.3s var(--ease-out-expo);
+  overflow: hidden;
+}
+
+.btn-brutalist::before {
+  content: '';
+  position: absolute;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+  background: var(--brutalist-white);
+  transform: translateY(100%);
+  transition: transform 0.3s var(--ease-out-expo);
+  z-index: 0;
+}
+
+.btn-brutalist span {
+  position: relative;
+  z-index: 1;
+}
+
+.btn-brutalist:hover {
+  color: var(--brutalist-black);
+}
+
+.btn-brutalist:hover::before {
+  transform: translateY(0);
+}
+
+.btn-brutalist-accent {
+  border-color: var(--brutalist-accent);
+  color: var(--brutalist-accent);
+}
+
+.btn-brutalist-accent::before {
+  background: var(--brutalist-accent);
+}
+
+.btn-brutalist-accent:hover {
+  color: var(--brutalist-white);
+}
+
+/* ========================================
+   GALLERY GRID STYLES
+   ======================================== */
+.gallery-item {
+  position: relative;
+  overflow: hidden;
+  /* cursor: none; */
+}
+
+.gallery-item img {
+  transition: transform 0.6s var(--ease-out-expo), filter 0.3s ease;
+}
+
+.gallery-item:hover img {
+  transform: scale(1.05);
+}
+
+.gallery-item .overlay {
+  position: absolute;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+  background: linear-gradient(to top, rgba(0, 0, 0, 0.9) 0%, transparent 50%);
+  opacity: 0;
+  transition: opacity 0.3s ease;
+}
+
+.gallery-item:hover .overlay {
+  opacity: 1;
+}
+
+.gallery-item .content {
+  position: absolute;
+  bottom: 0;
+  left: 0;
+  width: 100%;
+  padding: 1.5rem;
+  transform: translateY(20px);
+  opacity: 0;
+  transition: all 0.4s var(--ease-out-expo);
+}
+
+.gallery-item:hover .content {
+  transform: translateY(0);
+  opacity: 1;
+}
+
+/* ========================================
+   NOISE TEXTURE OVERLAY
+   ======================================== */
+.noise-overlay {
+  position: fixed;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+  pointer-events: none;
+  z-index: 9997;
+  opacity: 0.03;
+  background-image: url("data:image/svg+xml,%3Csvg viewBox='0 0 256 256' xmlns='http://www.w3.org/2000/svg'%3E%3Cfilter id='noise'%3E%3CfeTurbulence type='fractalNoise' baseFrequency='0.9' numOctaves='4' stitchTiles='stitch'/%3E%3C/filter%3E%3Crect width='100%25' height='100%25' filter='url(%23noise)'/%3E%3C/svg%3E");
+}
+
+/* ========================================
+   GRID LINES BACKGROUND
+   ======================================== */
+.grid-lines {
+  position: fixed;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+  pointer-events: none;
+  z-index: 0;
+  background-size: 80px 80px;
+  background-image: 
+    linear-gradient(to right, rgba(255, 255, 255, 0.02) 1px, transparent 1px),
+    linear-gradient(to bottom, rgba(255, 255, 255, 0.02) 1px, transparent 1px);
+}
+
+/* ========================================
+   SECTION DIVIDERS
+   ======================================== */
+.section-divider {
+  width: 100%;
+  height: 1px;
+  background: linear-gradient(to right, transparent, var(--brutalist-gray-mid), transparent);
+}
+
+/* ========================================
+   MARQUEE ANIMATION
+   ======================================== */
+.marquee-container {
+  overflow: hidden;
+  white-space: nowrap;
+}
+
+.marquee-content {
+  display: inline-flex;
+  animation: marquee 20s linear infinite;
+}
+
+@keyframes marquee {
+  0% { transform: translateX(0); }
+  100% { transform: translateX(-50%); }
+}
+
+/* ========================================
+   PULSE ANIMATION
+   ======================================== */
+.pulse {
+  animation: pulse 2s ease-in-out infinite;
+}
+
+@keyframes pulse {
+  0%, 100% { opacity: 1; }
+  50% { opacity: 0.5; }
+}
+
+/* ========================================
+   FLOAT ANIMATION
+   ======================================== */
+.float {
+  animation: float 6s ease-in-out infinite;
+}
+
+@keyframes float {
+  0%, 100% { transform: translateY(0); }
+  50% { transform: translateY(-20px); }
+}
+
+/* ========================================
+   ROTATE ANIMATION
+   ======================================== */
+.rotate-slow {
+  animation: rotateSlow 20s linear infinite;
+}
+
+@keyframes rotateSlow {
+  from { transform: rotate(0deg); }
+  to { transform: rotate(360deg); }
+}
+
+/* ========================================
+   SCAN LINES EFFECT
+   ======================================== */
+.scan-lines::after {
+  content: '';
+  position: absolute;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+  background: repeating-linear-gradient(
+    0deg,
+    transparent,
+    transparent 2px,
+    rgba(0, 0, 0, 0.1) 2px,
+    rgba(0, 0, 0, 0.1) 4px
+  );
+  pointer-events: none;
+}
+
+/* ========================================
+   UTILITY CLASSES
+   ======================================== */
+.text-gradient {
+  background: linear-gradient(135deg, var(--brutalist-white) 0%, var(--brutalist-gray-light) 100%);
+  -webkit-background-clip: text;
+  background-clip: text;
+  -webkit-text-fill-color: transparent;
+}
+
+.text-accent {
+  color: var(--brutalist-accent);
+}
+
+.bg-accent {
+  background-color: var(--brutalist-accent);
+}
+
+.border-accent {
+  border-color: var(--brutalist-accent);
+}
+
+/* Border Angled Cut */
+.clip-angled {
+  clip-path: polygon(0 0, 100% 0, 100% calc(100% - 20px), calc(100% - 20px) 100%, 0 100%);
+}
+
+/* ========================================
+   RESPONSIVE ADJUSTMENTS
+   ======================================== */
+@media (max-width: 768px) {
+  body {
+    cursor: auto;
+  }
+  
+  .cursor-dot,
+  .cursor-outline {
+    display: none;
+  }
+  
+  .glitch::before,
+  .glitch::after {
+    display: none;
+  }
+}
+
+/* ========================================
+   SHADCN/UI COMPONENT OVERRIDES
+   ======================================== */
+@layer base {
+  * {
+    @apply border-border outline-ring/50;
+  }
+  body {
+    @apply bg-background text-foreground;
+  }
+}
